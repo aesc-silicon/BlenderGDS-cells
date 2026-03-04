@@ -4,15 +4,27 @@ SPDX-FileCopyrightText: 2026 aesc-silicon
 SPDX-License-Identifier: Apache-2.0
 -->
 
-# BlenderGDS Standard Cells
+# BlenderGDS Cells
 
-Pre-extracted GDS files for all IHP SG13G2 standard cells, ready for direct import into [BlenderGDS](https://github.com/aesc-silicon/BlenderGDS).
+Pre-extracted GDS files for open-source PDK cell libraries, ready for direct import into [BlenderGDS](https://github.com/aesc-silicon/BlenderGDS).
 
 ## Overview
 
-The IHP SG13G2 standard cell library ships as a single monolithic GDS file containing all cells. This repository provides each cell as its own individual GDS file so they can be imported directly into BlenderGDS without any preprocessing.
+Most PDK cell libraries ship as single monolithic GDS files containing all cells. This repository provides each cell as its own individual GDS file so they can be imported directly into BlenderGDS without any preprocessing.
 
-84 cells are included, covering:
+Currently included:
+
+| PDK | Directory | Stdcells | IO Cells |
+|-----|-----------|----------|----------|
+| IHP SG13G2 | `ihp-sg13g2/` | 84 | 23 |
+
+Planned: SKY130, GF180MCU.
+
+## IHP SG13G2
+
+### Standard Cells (`ihp-sg13g2/stdcells/`)
+
+84 cells covering:
 
 - **Combinational logic**: AND, OR, NAND, NOR, XOR, XNOR, INV, BUF (multiple drive strengths)
 - **Complex gates**: AOI, OAI, MUX2, MUX4
@@ -21,12 +33,20 @@ The IHP SG13G2 standard cell library ships as a single monolithic GDS file conta
 
 All cells are named with the `sg13g2_` prefix and a drive-strength suffix (e.g. `sg13g2_and2_1.gds`, `sg13g2_inv_4.gds`).
 
+### IO Cells (`ihp-sg13g2/iocells/`)
+
+23 cells covering:
+
+- **Input/Output pads**: `IOPadIn`, `IOPadOut` (4/16/30 mA), `IOPadInOut` (4/16/30 mA), `IOPadTriOut` (4/16/30 mA), `IOPadAnalog`
+- **Power pads**: `IOPadVdd`, `IOPadVss`, `IOPadIOVdd`, `IOPadIOVss`
+- **Utility**: corner cell, filler cells (200–10000 units)
+
 ## Usage
 
 1. Install [BlenderGDS](https://github.com/aesc-silicon/BlenderGDS) and enable it in Blender.
 2. Go to **File → Import → GDSII (.gds)**.
-3. Select the **IHP Open PDK SG13G2** as the PDK.
-4. Browse to any file in `ihp-sg13g2/` and click **Import GDSII**.
+3. Select the appropriate PDK (e.g. **IHP Open PDK SG13G2**).
+4. Browse to any file in `ihp-sg13g2/stdcells/` or `ihp-sg13g2/iocells/` and click **Import GDSII**.
 
 ## Gallery
 
